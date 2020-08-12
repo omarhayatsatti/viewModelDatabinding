@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:textSize="36sp"
-            android:text="@={viewModel.total}"
+            android:text="@{String.valueOf(viewModel.totalData)}"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="251dp" />
 

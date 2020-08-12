@@ -2,21 +2,23 @@ package com.hayat.viewmodeldemo
 
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel(startingTotal : Int) : ViewModel(),Observable {
-    @Bindable
-    var total = MutableLiveData<String>()
+    private var total = MutableLiveData<Int>()
     @Bindable
     var totalinput = MutableLiveData<String>()
 
+    val totalData : LiveData<Int>
+        get() = total
     init {
-        total.value = startingTotal.toString()
+        total.value = startingTotal
     }
 
     fun setTotal(){
-        total.value =(total.value?.toInt())?.plus(totalinput.value!!.toInt()).toString()
+        total.value =(total.value)?.plus(totalinput.value?.toInt()!!)
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
